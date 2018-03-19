@@ -28,6 +28,8 @@ class Cell extends Component {
     return (
       <View style={[
         {
+          borderLeftWidth: 0,
+          borderBottomWidth: 0,
           borderTopWidth: borderWidth,
           borderRightWidth: borderWidth,
           borderColor: borderColor,
