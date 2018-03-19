@@ -36,8 +36,8 @@ class Table extends Component {
       <View style={[
         this.props.style,
         {
-          borderLeftWidth: borderWidth,
-          borderBottomWidth: borderWidth,
+          // borderLeftWidth: borderWidth,
+          // borderBottomWidth: borderWidth,
           borderColor: borderColor
         }
       ]}>
