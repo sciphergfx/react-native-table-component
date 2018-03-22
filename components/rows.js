@@ -49,8 +49,6 @@ class Rows extends Component {
     widthArr: PropTypes.array,
     flexArr: PropTypes.array,
     data: PropTypes.array,
-    activeOpacity: PropTypes.number,
-    onPress: PropTypes.function,
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
   }
