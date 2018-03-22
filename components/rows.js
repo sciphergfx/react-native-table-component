@@ -54,7 +54,7 @@ class Rows extends Component {
     widthArr: PropTypes.array,
     flexArr: PropTypes.array,
     data: PropTypes.array,
-    action: PropTypes.object,
+    action: PropTypes.func,
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
   }
