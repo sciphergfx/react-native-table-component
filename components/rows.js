@@ -8,12 +8,18 @@ class Row extends Component {
     widthArr: PropTypes.array,
     flexArr: PropTypes.array,
     data: PropTypes.array,
+    dataValues: PropTypes.object,
+    onPress: PropTypes.func,
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
   }
 
+  _onPress(data){
+    this.props.onPress(data)
+  }
+
   render() {
-    const {data, style, widthArr, height, flexArr, textStyle, borderStyle} = this.props;
+    const {data, dataValues, style, widthArr, height, flexArr, textStyle, borderStyle} = this.props;
     let widthNum = 0;
     if (widthArr) {
       for(let i=0; i<widthArr.length; i++) {
@@ -21,10 +27,9 @@ class Row extends Component {
       }
     }
 
-
     return (
       data ?
-      <TouchableOpacity activeOpacity={this.props.activeOpacity || 1} onPress={this.props.onPress}>
+      <TouchableOpacity activeOpacity={this.props.activeOpacity || 1} onPress={() => this._onPress(dataValues)}>
       <View style={[
         height && {height: height},
         widthNum && {width: widthNum},
@@ -49,8 +54,13 @@ class Rows extends Component {
     widthArr: PropTypes.array,
     flexArr: PropTypes.array,
     data: PropTypes.array,
+    action: PropTypes.object,
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
+  }
+
+  _onPress(data){
+    this.props.action(data)
   }
 
   render() {
@@ -76,7 +86,7 @@ class Rows extends Component {
         {
           data.map((item, i) => {
             const height = heightArr && heightArr[i];
-            return <Row  activeOpacity={this.props.activeOpacity || 1} onPress={this.props.onPress} key={i} data={item} widthArr={widthArr} height={height} flexArr={flexArr} style={style} textStyle={textStyle} borderStyle={borderStyle}/>
+            return <Row activeOpacity={this.props.activeOpacity || 1} dataValues={data.data} onPress={(e) => this._onPress(e)} key={i} data={item.row} widthArr={widthArr} height={height} flexArr={flexArr} style={style} textStyle={textStyle} borderStyle={borderStyle}/>
           })
         }
       </View>
