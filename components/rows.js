@@ -86,7 +86,7 @@ class Rows extends Component {
         {
           data.map((item, i) => {
             const height = heightArr && heightArr[i];
-            return <Row activeOpacity={this.props.activeOpacity || 1} dataValues={data.data} onPress={(e) => this._onPress(e)} key={i} data={item.row} widthArr={widthArr} height={height} flexArr={flexArr} style={style} textStyle={textStyle} borderStyle={borderStyle}/>
+            return <Row activeOpacity={this.props.activeOpacity || 1} dataValues={item.data} onPress={(e) => this._onPress(e)} key={i} data={item.row} widthArr={widthArr} height={height} flexArr={flexArr} style={style} textStyle={textStyle} borderStyle={borderStyle}/>
           })
         }
       </View>
