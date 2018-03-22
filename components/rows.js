@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, ViewPropTypes, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, ViewPropTypes, Text, StyleSheet } from 'react-native';
 import Cell from './cell';
 
 class Row extends Component {
@@ -24,6 +24,7 @@ class Row extends Component {
 
     return (
       data ?
+      <TouchableOpacity activeOpacity={this.props.activeOpacity || 1} onPress={this.props.onPress}>
       <View style={[
         height && {height: height},
         widthNum && {width: widthNum},
@@ -37,7 +38,7 @@ class Row extends Component {
             return <Cell key={i} data={item} width={width} height={height} flex={flex} textStyle={textStyle} borderStyle={borderStyle}/>
           })
         }
-      </View>
+      </View></TouchableOpacity>
       : null
     )
   }
@@ -48,6 +49,8 @@ class Rows extends Component {
     widthArr: PropTypes.array,
     flexArr: PropTypes.array,
     data: PropTypes.array,
+    activeOpacity: PropTypes.number,
+    onPress: PropTypes.function,
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
   }
@@ -75,7 +78,7 @@ class Rows extends Component {
         {
           data.map((item, i) => {
             const height = heightArr && heightArr[i];
-            return <Row key={i} data={item} widthArr={widthArr} height={height} flexArr={flexArr} style={style} textStyle={textStyle} borderStyle={borderStyle}/>
+            return <Row  activeOpacity={this.props.activeOpacity || 1} onPress={this.props.onPress} key={i} data={item} widthArr={widthArr} height={height} flexArr={flexArr} style={style} textStyle={textStyle} borderStyle={borderStyle}/>
           })
         }
       </View>
