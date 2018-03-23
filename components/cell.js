@@ -25,11 +25,12 @@ class Cell extends Component {
       borderColor = '#000';
     }
 
+
     return (
       <View style={[
         {
-          borderLeftWidth: 0,
-          borderBottomWidth: 0,
+          borderLeftWidth: borderWidth,
+          borderBottomWidth: borderWidth,
           borderTopWidth: borderWidth,
           borderRightWidth: borderWidth,
           borderColor: borderColor,
